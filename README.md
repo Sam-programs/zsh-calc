@@ -1,0 +1,25 @@
+# zsh-calc a plugin that allows you to run math calcuations with no prefixes
+by default zsh-calc searchs for a calcution program from   
+qalc calc and bc  
+qalc has highlighting unit calculations and conversion, physical constants, symbolic calculations,etc  
+calc has less features but is faster  
+install whichever u like i recommend qalc 
+```sh
+ sudo pacman -S libqalculate
+```
+to install simply run `install.sh`    
+to activate the plugin source it at the bottom of your .zshrc   
+```sh 
+...
+source /usr/share/zsh/plugins/zsh-calc/zsh-calc.zsh
+```
+if you have qalc and calc installed auto detection will pick qalc  
+if you want it to use calc instead set CALC_CMD to "echo \$BUFFER > /tmp/"$USER"calctemp; calc -f /tmp/"$USER"calctemp" in your .zshrc
+```sh
+#qalc
+CALC_CMD="echo \$BUFFER > /tmp/"$USER"qalctemp;qalc -t -c -f /tmp/"$USER"qalctemp"
+#calc
+CALC_CMD="echo \$BUFFER > /tmp/"$USER"calctemp; calc -f /tmp/"$USER"calctemp"
+#bc
+CALC_CMD='echo $BUFFER | bc -l'
+```
