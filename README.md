@@ -1,4 +1,12 @@
-# zsh-calc a plugin that allows you to run math calcuations with no prefixes
+# zsh-calc 
+## a plugin that allows you to run math calcuations with no prefixes
+### showcase
+```sh 
+$10 + 20
+30
+$10gigabyte / 100 megabyte
+100
+```
 by default zsh-calc searchs for a calcution program from   
 qalc calc and bc  
 qalc has highlighting unit calculations and conversion, physical constants, symbolic calculations,etc  
