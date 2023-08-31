@@ -7,6 +7,7 @@ $10 + 20
 $10gigabyte / 100 megabyte
 100
 ```
+## installation
 by default zsh-calc searchs for a calcution program from   
 qalc calc and bc  
 qalc has highlighting unit calculations and conversion, physical constants, symbolic calculations,etc  
