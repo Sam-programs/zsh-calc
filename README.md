@@ -32,3 +32,5 @@ CALC_CMD="echo \$BUFFER > /tmp/"$USER"calctemp; calc -f /tmp/"$USER"calctemp"
 #bc
 CALC_CMD='echo $BUFFER | bc -l'
 ```
+credits to this stackexchange post 
+https://unix.stackexchange.com/questions/486326/do-math-operation-on-the-numbers-typed-into-command-line-without-call-bc/486339#486339
