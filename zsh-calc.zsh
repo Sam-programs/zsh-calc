@@ -26,6 +26,7 @@ echo "base $@" | qalc > /dev/null
 accept-line() {
  if [[ $BUFFER =~ '^[ ]?[(+-]?[(0-9]' ]]; then
     echo 
+    print -S "$BUFFER" #saving the command to history
     eval $CALC_CMD
     BUFFER=
     calcuated='1'
