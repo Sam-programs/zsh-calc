@@ -5,7 +5,7 @@ for cmd in qalc calc bc;do
    #copying CALC_CMD to your .zshrc would decrease startup time if that's even a problem
    #and also allow you to change command line arguments
    case "$cmd" in
-      "qalc") CALC_CMD="echo \$BUFFER > /tmp/"$USER"qalctemp;qalc -t -c -f /tmp/"$USER"qalctemp"
+      "qalc") CALC_CMD="echo \$BUFFER > /tmp/"$USER"qalctemp; qalc -t -c -f /tmp/"$USER"qalctemp"
       ;;
       "calc") CALC_CMD="echo \$BUFFER > /tmp/"$USER"calctemp; calc -f /tmp/"$USER"calctemp"
       ;;
@@ -14,8 +14,11 @@ for cmd in qalc calc bc;do
    esac
    break 
 done
-  
+fi
 
+if [[ -z $CALC_CMD ]]; then
+   echo "zsh-calc Failed to find a calculation program (qalc,calc,bc)"
+   return
 fi
 
 #helper function for setting qalc's base
