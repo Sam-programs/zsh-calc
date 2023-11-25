@@ -1,10 +1,10 @@
 # zsh-calc 
  a plugin that allows you to run math calcuations with no prefixes
 ### showcase
-```sh 
+``` ada
 $ 10 + 20
 30
-$ 10gigabyte / 100 megabyte
+$ 10 gigabyte / 100 megabyte
 100
 ```
 ## installation
