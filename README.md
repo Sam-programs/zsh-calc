@@ -14,9 +14,9 @@ calc and bc have less features but are faster.
 u can also configure other calculation programs see [config](https://github.com/Sam-programs/zsh-calc#config).
 install whichever u like, i recommend qalc.   
 ```sh
- #arch linux
- sudo pacman -S libqalculate
- # for other distros search with your package manager for qalculate or qalc
+#arch linux
+sudo pacman -S libqalculate
+# for other distros search with your package manager for qalculate or qalc
 ```
 to install the plugin itself run the `install.sh`.    
 to activate the plugin source it at the bottom of your `.zshrc`.
