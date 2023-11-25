@@ -30,7 +30,7 @@ the auto detection system will pick the calculation program in this order.
 2. calc  
 3. bc  
 
-to explicitly use a program set CALC_CMD to one of the values below
+to explicitly use a program set `CALC_CMD` to one of the values below
 ```sh
 #qalc
 CALC_CMD="echo \$BUFFER > /tmp/"$USER"qalctemp; qalc -t -c -f /tmp/"$USER"qalctemp"
