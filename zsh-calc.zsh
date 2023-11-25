@@ -19,27 +19,27 @@ done
 fi
 
 #helper function for setting qalc's base
-base() {
-echo "base $@" | qalc > /dev/null 
+function base() {
+   echo "base $@" | qalc > /dev/null 
 }
 
-accept-line() {
- if [[ $BUFFER =~ '^[ ]?[-+\(0-9]' ]]; then
-    echo 
-    print -S "$BUFFER" #saving the command to history
-    eval $CALC_CMD
-    BUFFER=
-    calcuated='1'
-  else 
-    unset calcuated
-  fi
-  zle .$WIDGET
+function accept-line() {
+   if [[ $BUFFER =~ '^[ ]?[-+\(0-9]' ]]; then
+      echo 
+      print -S -- "$BUFFER" #saving the command to history
+      eval $CALC_CMD
+      BUFFER=
+      calcuated='1'
+   else 
+      unset calcuated
+   fi
+   zle .$WIDGET
 }
 
 calc_precmd(){
-  if ! [[ -z $calcuated ]]; then
-    printf '\033[F'
-  fi
+   if ! [[ -z $calcuated ]]; then
+      printf '\033[F'
+   fi
 }
 
 [[ -z $precmd_functions ]] && precmd_functions=()
