@@ -37,10 +37,10 @@ CALC_CMD="echo \$BUFFER > /tmp/"$USER"qalctemp; qalc -t -c -f /tmp/"$USER"qalcte
 #calc
 CALC_CMD="echo \$BUFFER > /tmp/"$USER"calctemp; calc -f /tmp/"$USER"calctemp"
 #bc
-CALC_CMD='echo $BUFFER | bc -l'
+CALC_CMD='echo \$BUFFER | bc -l'
 # custom
 # BUFFER is your command line
-CALC_CMD='echo $BUFFER | CUSTOM_CALC'
+CALC_CMD='echo \$BUFFER | CUSTOM_CALC'
 ```
 # highlight
 if u are using [zsh-sytnax-highlight](https://github.com/zsh-users/zsh-syntax-highlighting) u can add this regex for coloring numbers
