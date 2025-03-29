@@ -26,12 +26,20 @@ function base() {
    echo "base $@" | qalc > /dev/null 
 }
 
+lastcommand=""
 function accept-line() {
-   if [[ $BUFFER =~ '^[ ]?[-+\(0-9]' ]]; then
-      echo 
+   if [[ $BUFFER =~ '^[ ]*[-+\(0-9]' ]]; then
+       lastcommand="${BUFFER/ */}"
+       if [[ $BUFFER =~ "^[^ ()]+[(]" ]]; then
+           lastcommand="${BUFFER/[ (]+[)] */}"
+       fi
+      # alias the last command to avoid command not found error
+      function $lastcommand() {
+         return 0
+      }
       print -S -- "$BUFFER" #saving the command to history
-      eval $CALC_CMD
-      BUFFER=
+      CONTENT=$(eval $CALC_CMD)
+      printf "\n${CONTENT%$'\n'}"
       calcuated='1'
    else 
       unset calcuated
@@ -39,9 +47,20 @@ function accept-line() {
    zle .$WIDGET
 }
 
+calc_preexec(){
+   if ! [[ -z $calcuated ]]; then
+      setopt SH_GLOB
+   fi
+}
+
+[[ -z $preexec_functions ]] && preexec_functions=()
+preexec_functions=($preexec_functions calc_preexec)
+
+
 calc_precmd(){
    if ! [[ -z $calcuated ]]; then
-      printf '\033[F'
+      setopt NO_SH_GLOB
+      unset -f $lastcommand
    fi
 }
 
