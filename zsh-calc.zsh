@@ -29,6 +29,9 @@ function base() {
 lastcommand=""
 function accept-line() {
    if [[ $BUFFER =~ '^[ ]*[-+\(0-9]' ]]; then
+       print -S -- "$BUFFER" #saving the command to history
+       CONTENT=$(eval $CALC_CMD)
+       printf "\n${CONTENT%$'\n'}"
        lastcommand="${BUFFER/ */}"
        if [[ $BUFFER =~ "^[^ ()]+[(]" ]]; then
            lastcommand="${BUFFER/[ (]+[)] */}"
@@ -37,9 +40,6 @@ function accept-line() {
       function $lastcommand() {
          return 0
       }
-      print -S -- "$BUFFER" #saving the command to history
-      CONTENT=$(eval $CALC_CMD)
-      printf "\n${CONTENT%$'\n'}"
       calcuated='1'
    else 
       unset calcuated
